@@ -21,6 +21,8 @@ impl StorageActor {
         match msg {
             ActorMessage::StoreRequest { item } => {
                 info!("Storing item: {:?}", item);
+                let mut db_lock = self.db.lock().unwrap();
+                db_lock.insert(item.type_id, item);
             },
             ActorMessage::GetItemRequest { type_id } => {
                 info!("Retrieving item with type_id: {}", type_id);
