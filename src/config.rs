@@ -1,0 +1,1 @@
+pub const TOPIC_REQUESTS: &str = "requests";
